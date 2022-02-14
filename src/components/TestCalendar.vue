@@ -50,25 +50,39 @@ export default {
 </script>
 
 <style>
+.first-day {
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  background-color: #4361ee !important;
+  transform: translateX(5px) !important;
+}
+.last-day {
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  background-color: #4361ee !important;
+  transform: translateX(-5px) !important;
+}
+
 /* a custom look for days in between selected range */
 .between-days {
-  transform: scale(1.4, 1) rotateX(45deg) !important;
+  border-radius: 0px !important;
+  transform: scale(1.4) rotateX(45deg) !important;
 }
 
 /* text is after the day-effect  so this is how i select it*/
 .vpd-day:hover .between-days {
-  transform: scale(1.1) !important;
+  transform: scale(1.2) !important;
 }
 .vpd-day .vpd-day-text:hover,
 .vpd-day .vpd-day-text:hover ~ .between-days {
-  transform: scale(1.1) !important;
+  transform: scale(1.2) !important;
 }
 
 /* change border-radius for normal-days which are not last day or first day*/
 .vpd-day:hover .normal-days:not(.last-day):not(.first-day) {
-  transform: scale(1.1) !important;
+  transform: scale(1.2) !important;
 }
-.normal-days {
+.normal-days:not(.first-day):not(.last-day) {
   border-radius: 5px !important;
 }
 </style>
