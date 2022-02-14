@@ -13,7 +13,7 @@
         <template #day-item="{ day, color }">
           <span
             :class="{
-              'vpd-day-effect': true,
+              'vpd-day-effect': !day.isFirst || !day.isLast,
               'first-day': day.isFirst,
               'between-days': day.isBetween,
               'last-day': day.isLast,
@@ -23,10 +23,7 @@
 
           <span
             @click="log(day)"
-            :class="{
-              'vpd-day-text': true,
-              'fix-hover': day.isBetween,
-            }"
+            class="vpd-day-text fix-hover"
             v-text="day.formatted"
           />
         </template>
@@ -59,16 +56,28 @@ export default {
 .first-day {
   border-top-right-radius: 100px !important;
   border-bottom-right-radius: 100px !important;
-  transform: rotateX(30deg) translate(2px) !important;
+  transform: translate(2px) !important;
 }
 .last-day {
   border-top-left-radius: 100px !important;
   border-bottom-left-radius: 100px !important;
-  transform: rotateX(30deg) translate(-2px) !important;
+  transform: translate(-2px) !important;
 }
 .between-days {
-  pointer-events: initial !important;
-  border-radius: 0px !important;
-  transform: rotateX(45deg) scale(1.3, 1) !important;
+  border-radius: 8% !important;
+  transform: scale(1.2, 1) rotateX(45deg) !important;
+}
+
+/* text is after the day-effect  so this is how i select it*/
+.vpd-day:hover .between-days {
+  border-radius: 5px !important;
+
+  transform: scale(1.1) !important;
+}
+.vpd-day .fix-hover:hover,
+.vpd-day .fix-hover:hover ~ .between-days {
+  border-radius: 5px !important;
+
+  transform: scale(1.1) !important;
 }
 </style>
