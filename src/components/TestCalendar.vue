@@ -54,13 +54,13 @@ export default {
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
   background-color: #4361ee !important;
-  transform: translateX(5px) !important;
+  transform: scale(0.8, 1) translateX(2px) !important;
 }
 .last-day {
   border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
   background-color: #4361ee !important;
-  transform: translateX(-5px) !important;
+  transform: scale(0.8, 1) translateX(-2px) !important;
 }
 
 /* a custom look for days in between selected range */
