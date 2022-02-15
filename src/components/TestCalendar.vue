@@ -8,7 +8,16 @@
         id="id"
         class="custom-input"
       ></v-text-field>
-      <date-picker v-model="date" custom-input=".custom-input" range>
+      <date-picker
+        v-model="date"
+        format=" jYYYY jMMMM jDD   "
+        custom-input=".custom-input"
+        range
+      >
+        <!-- slot for "header-date" -->
+        <template #header-date="{ vm }">
+          {{ formatDay(vm) }}
+        </template>
         <!-- slot for "day-item" -->
         <template #day-item="{ day, color }">
           <span
@@ -45,6 +54,25 @@ export default {
         { item }
       );
     },
+
+    formatDay(vm) {
+      let dates = vm.selectedDates;
+      if (dates.length <= 1) {
+        this.log(dates[0]);
+        return this.$moment(dates[0]).locale("fa").format("jDD jMMMM");
+      }
+
+      let totall = dates[1].diff(dates[0], "days");
+      this.log(totall);
+      return `از ${this.$moment(dates[0])
+        .locale("fa")
+        .format("jDD jMMMM")} تا ${this.$moment(dates[1])
+        .locale("fa")
+        .format("jDD jMMMM")} به مدت ${totall} روز`;
+    },
+  },
+  mounted() {
+    this.$moment.locale = "fa";
   },
 };
 </script>
