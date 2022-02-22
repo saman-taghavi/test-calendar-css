@@ -34,6 +34,7 @@
           <span @click="log(day)" class="vpd-day-text" v-text="day.formatted" />
         </template>
       </date-picker>
+      <date-picker v-model="date" range></date-picker>
     </v-col>
   </v-row>
 </template>
