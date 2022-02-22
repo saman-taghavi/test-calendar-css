@@ -16,11 +16,20 @@
             >
           </v-col>
         </v-row>
-        <v-row align="center" justify="center">
-          <v-col cols="3" v-for="item in computedTitles" :key="item">
-            <test-card :title="item" />
+        <transition-group
+          class="row align-center justify-center carousel"
+          tag="div"
+          name="list"
+        >
+          <v-col
+            cols="3"
+            v-for="item in computedTitles"
+            class="list-item"
+            :key="item"
+          >
+            <test-card class="slide" :title="item" />
           </v-col>
-        </v-row>
+        </transition-group>
       </v-container>
     </v-main>
   </v-app>
@@ -55,3 +64,22 @@ export default {
   },
 };
 </script>
+<style scoped>
+.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+  transform: translateX(30px);
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.list-enter-to {
+  opacity: 1;
+  transition: 1s;
+}
+</style>
