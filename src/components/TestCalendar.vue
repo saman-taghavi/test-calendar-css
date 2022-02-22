@@ -95,21 +95,21 @@ export default {
 /* a custom look for days in between selected range */
 .between-days {
   border-radius: 0px !important;
-  transform: scale(1.4) rotateX(45deg) !important;
+  transform: scale(1.3) rotateX(45deg) !important;
 }
 
 /* text is after the day-effect  so this is how i select it*/
 .vpd-day:hover .between-days {
-  transform: scale(1.2) !important;
+  transform: scale(1.1) !important;
 }
 .vpd-day .vpd-day-text:hover,
 .vpd-day .vpd-day-text:hover ~ .between-days {
-  transform: scale(1.2) !important;
+  transform: scale(1.1) !important;
 }
 
 /* change border-radius for normal-days which are not last day or first day*/
 .vpd-day:hover .normal-days:not(.last-day):not(.first-day) {
-  transform: scale(1.2) !important;
+  transform: scale(1.1) !important;
 }
 .normal-days:not(.first-day):not(.last-day) {
   border-radius: 5px !important;
