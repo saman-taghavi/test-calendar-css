@@ -31,7 +31,14 @@
             :style="{ 'background-color': color }"
           />
 
-          <span @click="log(day)" class="vpd-day-text" v-text="day.formatted" />
+          <span
+            @click="log(day)"
+            :class="{
+              'vpd-day-text': true,
+              'color-day-text': day.isFirst || day.isLast,
+            }"
+            v-text="day.formatted"
+          />
         </template>
       </date-picker>
       <date-picker v-model="date" range></date-picker>
@@ -82,14 +89,14 @@ export default {
 .first-day {
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
-  background-color: #4361ee !important;
-  transform: scale(0.8, 1) translateX(2px) !important;
+  /* background-color: #4361ee !important; */
+  transform: scale(1.1, 1.3) rotateX(45deg) !important;
 }
 .last-day {
   border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
-  background-color: #4361ee !important;
-  transform: scale(0.8, 1) translateX(-2px) !important;
+  /* background-color: #4361ee !important; */
+  transform: scale(1.1, 1.3) rotateX(45deg) !important;
 }
 
 /* a custom look for days in between selected range */
@@ -101,17 +108,21 @@ export default {
 /* text is after the day-effect  so this is how i select it*/
 .vpd-day:hover .between-days {
   transform: scale(1.1) !important;
+  border-radius: 5px !important;
 }
 .vpd-day .vpd-day-text:hover,
 .vpd-day .vpd-day-text:hover ~ .between-days {
   transform: scale(1.1) !important;
+  border-radius: 5px !important;
 }
 
 /* change border-radius for normal-days which are not last day or first day*/
 .vpd-day:hover .normal-days:not(.last-day):not(.first-day) {
   transform: scale(1.1) !important;
-}
-.normal-days:not(.first-day):not(.last-day) {
   border-radius: 5px !important;
+}
+
+.color-day-text {
+  color: black;
 }
 </style>
